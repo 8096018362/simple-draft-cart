@@ -1,0 +1,30 @@
+<div class="input-container" *ngIf="!showProducts" style="padding: 20px;">
+  <label for="username">Username:</label><br /><br />
+  <input type="text" id="username" [(ngModel)]="username" placeholder="Enter your username"
+    style="padding: 5px;"><br /><br />
+  <button (click)="doLogin()">Login</button>
+</div>
+
+<div *ngIf="showProducts">
+  <h1>Welcome to Our Store!</h1>
+
+  <div class="grid-container">
+
+    <div class="product-card" *ngFor="let product of products">
+
+      <h3>{{ product.name }}</h3>
+      <p>₹{{ product.price }}</p>
+
+      <button (click)="addToCart(product)" [ngClass]="{ 'added': isAdded(product) }" [disabled]="isAdded(product)">
+        {{ isAdded(product) ? 'Added' : 'Add to Cart' }}
+      </button>
+
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary" (click)="submit()">submit</button>
+
+</div>
+
+<router-outlet />
