@@ -27,4 +27,11 @@
 
 </div>
 
+<div *ngIf="draftedCart.length > 0">
+  <h2>Your Drafted Cart:</h2>
+  <ul>
+    <li *ngFor="let item of draftedCart">{{ item.name }} - ₹{{ item.price }}</li>
+  </ul>
+</div>
+
 <router-outlet />

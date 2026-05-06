@@ -35,8 +35,12 @@ export class AppComponent {
 
   username: string = '';
   showProducts = false;
+  draftedCart: any[] = [];
   doLogin() {
     this.showProducts = true;
+    console.log('Logged in as:', this.username);
+    console.log('Cart contents:', storage.get(this.username));
+    this.draftedCart = JSON.parse(storage.get(this.username) || '[]');
   }
   submit() {
     storage.set(this.username, JSON.stringify(this.cart));
